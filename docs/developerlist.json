@@ -1,0 +1,58 @@
+{
+  "directorio": [
+    {
+      "title": "Front End Developer",
+      "language": "JavaScript, VB.NET, C#",
+      "framework":"AngularJS, VueJS",
+      "library":"ReactJS",
+      "learning":"Python, ReduxJS",
+      "workplace":"Solid Logix LLC",
+      "name": "Alvison Hunter"
+    },
+    {
+      "title": "Full Stack Developer",
+      "language": "JavaScript, VB.NET, C#, Python",
+      "framework":".NET Core",
+      "library":"Accord.NET",
+      "learning":"Golang, Angular",
+      "workplace":"Chaps-Olean",
+      "name": "Ernesto Gutierrez"
+    },
+    {
+      "title": "Web Programmer",
+      "language": "JavaScript",
+      "framework":"CypressJS",
+      "library":"Cypress Testing Library",
+      "learning":"Python, ES6",
+      "workplace":"Nica Source",
+      "name": "Kathya Sarria"
+    },
+    {
+      "title": "Web Application Developer",
+      "language": "JavaScript, PHP",
+      "framework":"VueJS",
+      "library":"Element UI",
+      "learning":"TypeScript",
+      "workplace":"True Apex",
+      "name": "Antonio Flores"
+    },
+    {
+      "title": "Web Developer",
+      "language": "Python",
+      "framework":"Django",
+      "library":"Pyglet",
+      "learning":"JavaScript,PHP",
+      "workplace":"Accedo Technologies",
+      "name": "Marvin Obando"
+    },
+    {
+      "title": "Full Stack Developer",
+      "language": "Python, PHP, Javascript",
+      "framework":"Laravel",
+      "library":"Swiftmailer",
+      "learning":"TypeScript, ReactJS",
+      "workplace":"Accedo Technologies",
+      "name": "Augusto Martinez"
+    }
+  ]
+}
