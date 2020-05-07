@@ -19,7 +19,7 @@
       rel="stylesheet"
       integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
       crossorigin="anonymous">
-    x<link
+    <link
       href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/slate/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-G9YbB4o4U6WS4wCthMOpAeweY4gQJyyx0P3nZbEBHyz+AtNoeasfRChmek1C2iqV"
@@ -28,10 +28,12 @@
   </head>
   <body ng-app="myApp">
     <div  ng-controller="customersCtrl">
+      <div class="row justify-content-end">
+        <p class="text-info mx-4 my-3"><i class="fa fa-sign-out" aria-hidden="true"></i> Currently Browsing as: <b id="visitor" class="text-warning">Guest</b></p</div>
       <div class="container-fluid px-3">
         <div class="row border-top border-info border-bottom
           justify-content-center mb-4">
-          <h1 class="text-info display-4 my-3 pb-2">Nica Web Developers Profiles
+          <h1 class="text-info display-4 my-3 pb-2"><i class="fa fa-address-book-o" aria-hidden="true"></i> Nica Web Developers Profiles
             Directory</h1>
         </div>
         <div class="row">
@@ -42,7 +44,7 @@
 
             <input id="topName" class="form-control mr-sm-2" type="text"
               ng-model="nameFilter"
-              placeholder="Search by Name..." />
+              placeholder="Search by Name..."  />
           </div>
           <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
             <label for="topLanguage" class="col-form-label text-uppercase text-white
@@ -154,8 +156,8 @@
                         </strong>{{ developer.learning }}</li>
                     </ul>
                     <div class="card-body">
-                      <a href="#" class="card-link">Twitter</a>
-                      <a href="#" class="card-link">LinkedIn</a>
+                      <a href="#" class="h3 card-link text-white"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                      <a href="#" class="h3 card-link text-white"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
                     </div>
                   </div>
 
@@ -172,12 +174,16 @@
     <div id="footer">
       <div class="container">
         <div class="row justify-content-center">
-          <p class="text-muted mx-1">Powered with AngularJS by <a href="#">Alvison
-              Hunter Arnuero - May 6th, 2020.</a></p>
-
+          <p class="text-muted mx-1">Powered with AngularJS by <b
+data-trigger='hover' data-toggle="popover"
+    title="About the developer" data-placement="top"
+    data-content="Web Developer, Angular, VueJS & ReactJS Fan, VB .Net coder, UX/UI design, Drummer, Bassist, Piano & Guitar Player, Husband & Proud Father of Two Brave Warriors.">Alvison
+              Hunter Arnuero - May 6th, 2020.</b></p>
         </div>
       </div>
     </div>
+
+
       <!-- AngularJS code -->
 <script src="js/app.js"></script>
     <!-- Optional JavaScript -->
@@ -193,6 +199,29 @@
       src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"></script>
+
+          <!-- bootbox code -->
+    <script src="js/bootbox.min.js"></script>
+    <script src="js/bootbox.locales.min.js"></script>
+    <script>
+   $( document ).ready(function() {
+     bootbox.prompt({
+    title: "Please provide us with your name.",
+    centerVertical: true,
+    callback: function(result){
+       $("#visitor").html(result);
+    }
+});
+
+});
+</script>
+<script>
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+</script>
   </body>
 
 </html>
+
+

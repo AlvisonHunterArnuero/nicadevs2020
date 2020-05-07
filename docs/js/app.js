@@ -1,5 +1,6 @@
 var app = angular.module("myApp", []);
 app.controller("customersCtrl", function ($scope) {
+  $scope.visitor = "Guest";
   angular.element(document).ready(function () {
     let req = new XMLHttpRequest();
     req.onreadystatechange = () => {
