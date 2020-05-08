@@ -3,56 +3,79 @@
     {
       "title": "Front End Developer",
       "language": "JavaScript, VB.NET, C#",
-      "framework":"AngularJS, VueJS",
-      "library":"ReactJS",
-      "learning":"Python, ReduxJS",
-      "workplace":"Solid Logix LLC",
-      "name": "Alvison Hunter"
+      "framework": "AngularJS, VueJS",
+      "library": "ReactJS",
+      "learning": "Python, ReduxJS",
+      "workplace": "Solid Logix LLC",
+      "name": "Alvison Hunter",
+      "twitter": "https://twitter.com/allwissendjager",
+      "linkedin": "https://www.linkedin.com/in/alvison-hunter-01512773/"
+    },
+    {
+      "title": "Systems Engineer",
+      "language": "PHP, Javascript, VB.NET",
+      "framework": ".NET",
+      "library": "JQuery",
+      "learning": "SQL DB, Java, Phyton, Linux, MS Windows Server",
+      "workplace": "Freelancer",
+      "name": "Engel Towers",
+      "twitter": "",
+      "linkedin": ""
     },
     {
       "title": "Full Stack Developer",
       "language": "JavaScript, VB.NET, C#, Python",
-      "framework":".NET Core",
-      "library":"Accord.NET",
-      "learning":"Golang, Angular",
-      "workplace":"Chaps-Olean",
-      "name": "Ernesto Gutierrez"
+      "framework": ".NET Core",
+      "library": "Accord.NET",
+      "learning": "Golang, Angular",
+      "workplace": "Chaps-Olean",
+      "name": "Ernesto Gutierrez",
+      "twitter": "https://twitter.com/eblind39",
+      "linkedin": ""
     },
     {
       "title": "Web Programmer",
       "language": "JavaScript",
-      "framework":"CypressJS",
-      "library":"Cypress Testing Library",
-      "learning":"Python, ES6",
-      "workplace":"Nica Source",
-      "name": "Kathya Sarria"
+      "framework": "CypressJS",
+      "library": "Cypress Testing Library",
+      "learning": "Python, ES6",
+      "workplace": "Nica Source",
+      "name": "Kathya Sarria",
+      "twitter": "https://twitter.com/SarriaKathya",
+      "linkedin": ""
     },
     {
       "title": "Web Application Developer",
       "language": "JavaScript, PHP",
-      "framework":"VueJS",
-      "library":"Element UI",
-      "learning":"TypeScript",
-      "workplace":"True Apex",
-      "name": "Antonio Flores"
+      "framework": "VueJS",
+      "library": "Element UI",
+      "learning": "TypeScript",
+      "workplace": "True Apex",
+      "name": "Antonio Flores",
+      "twitter": "",
+      "linkedin": ""
     },
     {
       "title": "Web Developer",
       "language": "Python",
-      "framework":"Django",
-      "library":"Pyglet",
-      "learning":"JavaScript,PHP",
-      "workplace":"Accedo Technologies",
-      "name": "Marvin Obando"
+      "framework": "Django",
+      "library": "Pyglet",
+      "learning": "JavaScript,PHP",
+      "workplace": "Accedo Technologies",
+      "name": "Marvin Obando",
+      "twitter": "",
+      "linkedin": ""
     },
     {
       "title": "Full Stack Developer",
       "language": "Python, PHP, Javascript",
-      "framework":"Laravel",
-      "library":"Swiftmailer",
-      "learning":"TypeScript, ReactJS",
-      "workplace":"Accedo Technologies",
-      "name": "Augusto Martinez"
+      "framework": "Laravel",
+      "library": "Swiftmailer",
+      "learning": "TypeScript, ReactJS",
+      "workplace": "Accedo Technologies",
+      "name": "Augusto Martinez",
+      "twitter": "",
+      "linkedin": ""
     }
   ]
 }
