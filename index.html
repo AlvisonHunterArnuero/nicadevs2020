@@ -9,7 +9,8 @@
       AngularJS,angular,angularjs,JavaScript,Developer,Nicaragua,framework,es6,
       desarrollo web" />
     <meta name="description" content="I wanted it to revive some of those
-      magical moments I lived and enjoyed with AngularJS, so I put together an small excercise. It will be a CRUD later on." />
+      magical moments I lived and enjoyed with AngularJS, so I put together an
+      small excercise. It will be a CRUD later on." />
     <meta name="revised" content="Alvison Hunter, 5/6/2020" />
     <meta name="author" content="Alvison Hunter Arnuero" />
     <script
@@ -24,16 +25,20 @@
       rel="stylesheet"
       integrity="sha384-G9YbB4o4U6WS4wCthMOpAeweY4gQJyyx0P3nZbEBHyz+AtNoeasfRChmek1C2iqV"
       crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="./css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="./css/styles.css" />
   </head>
   <body ng-app="myApp">
-    <div  ng-controller="customersCtrl">
+    <div ng-controller="customersCtrl">
       <div class="row justify-content-end">
-        <p class="text-info mx-4 my-3"><i class="fa fa-sign-out" aria-hidden="true"></i> Currently Browsing as: <b id="visitor" class="text-warning">Guest</b></p</div>
+        <p class="text-info mx-4 my-3"><i class="fa fa-sign-out"
+            aria-hidden="true"></i> Currently Browsing as: <b id="visitor"
+            class="text-warning">Guest</b></p</div>
       <div class="container-fluid px-3">
         <div class="row border-top border-info border-bottom
           justify-content-center mb-4">
-          <h1 class="text-info display-4 my-3 pb-2"><i class="fa fa-address-book-o" aria-hidden="true"></i> Nica Web Developers Profiles
+          <h1 class="text-info display-4 my-3 pb-2"><i class="fa
+              fa-address-book-o" aria-hidden="true"></i> Nica Web Developers
+            Profiles
             Directory</h1>
         </div>
         <div class="row">
@@ -44,10 +49,11 @@
 
             <input id="topName" class="form-control mr-sm-2" type="text"
               ng-model="nameFilter"
-              placeholder="Search by Name..."  />
+              placeholder="Search by Name..." />
           </div>
           <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-            <label for="topLanguage" class="col-form-label text-uppercase text-white
+            <label for="topLanguage" class="col-form-label text-uppercase
+              text-white
               h3">Search By Language</label>
             <input id="topLanguage" class="form-control" type="text"
               ng-model="languageFilter"
@@ -59,7 +65,8 @@
               text-white h3">Search By Title</label>
             <select id="topTitle" class="form-control"
               ng-model="titleFilter" placeholder="Search by Title" />
-              <option value="">Select a Title</option>
+              <option value="">Select a Title...<title></title></option>
+              <option value="Systems Engineer">Systems Engineer</option>
               <option value="Front End Developer">Front End Developer</option>
               <option value="Full Stack Developer">Full Stack Developer</option>
               <option value="Web Programmer">Web Programmer</option>
@@ -109,7 +116,8 @@
                     ng-repeat="x in names | filter: nameFilter | filter:
                     languageFilter | filter: titleFilter | orderBy : 'name'">
                     <td style="text-align: center;"><img class="thumbDeveloper"
-                        height="60" width="60" ng-src="assets/{{x.name}}.jpeg" /></td>
+                        height="60" width="60" ng-src="assets/{{x.name}}.jpeg"
+                        /></td>
                     <td style="text-align: center;">{{ x.name }}</td>
                     <td style="text-align: center;">{{ x.title }}</td>
                     <td style="text-align: center;">{{ x.language }}</td>
@@ -130,10 +138,11 @@
                   ng-repeat="developer in titles | filter: nameFilter | filter:
                   languageFilter | filter: titleFilter | orderBy : 'name'">
                   <div class="card border-secondary mb-3">
-                    <img class="card-img-top" ng-src="assets/{{developer.name}}.jpeg"
+                    <img class="card-img-top"
+                      ng-src="assets/{{developer.name}}.jpeg"
                       :alt="{{ developer.name }}" />
                     <div class="card-body">
-                      <h3 class="card-title text-uppercase text-info">{{
+                      <h3 class="card-title text-uppercase text-warning">{{
                         developer.name }}</h3>
                       <p class="card-text"><strong class="text-uppercase
                           text-success">{{ developer.title }}</strong> </p>
@@ -156,8 +165,33 @@
                         </strong>{{ developer.learning }}</li>
                     </ul>
                     <div class="card-body">
-                      <a href="#" class="h3 card-link text-white"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                      <a href="#" class="h3 card-link text-white"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                      <div class="row justify-content-between">
+                        <div class="col-auto">
+                          <a ng-href="{{developer.twitter}}" class="h2 card-link
+                            text-white"><i class="fa fa-twitter"
+                              aria-hidden="true"></i></a>
+                          <a ng-href="{{developer.linkedin}}" class="h2
+                            card-link
+                            text-white">
+                            <i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="col-auto">
+
+                          <a ng-href="/" class="h2 card-link
+                            text-info"><i class="fa fa-pencil-square-o"
+                              aria-hidden="true"></i>
+                          </a>
+
+                          <a ng-href="/" class="h2 card-link
+                            text-danger"><i class="fa fa-trash-o"
+                              aria-hidden="true"></i>
+                          </a>
+
+
+                        </div>
+                      </div>
+
+
                     </div>
                   </div>
 
@@ -174,19 +208,22 @@
     <div id="footer">
       <div class="container">
         <div class="row justify-content-center">
-          <p class="text-muted mx-1"> © Copyright May 6th, 2020 NicaWebDevsProfiles | <b
-data-trigger='hover' data-toggle="popover"
-    title="About the developer" data-placement="top"
-    data-content="Web Developer, Angular, VueJS & ReactJS Fan, VB .Net coder, UX/UI design, Drummer, Bassist, Piano & Guitar Player, Husband & Proud Father of Two Brave Warriors.">Alvison
-           Made With ❤ by Alvison hunter with
-      with AngularJS.</b></p>
+          <p class="text-muted mx-1"> © Copyright May 6th, 2020
+            NicaWebDevsProfiles | <b
+              data-trigger='hover' data-toggle="popover"
+              title="About the developer" data-placement="top"
+              data-content="Web Developer, Angular, VueJS & ReactJS Fan, VB .Net
+              coder, UX/UI design, Drummer, Bassist, Piano & Guitar Player,
+              Husband & Proud Father of Two Brave Warriors.">Alvison
+              Made With ❤ by Alvison hunter with
+              with AngularJS.</b></p>
         </div>
       </div>
     </div>
 
 
-      <!-- AngularJS code -->
-<script src="js/app.js"></script>
+    <!-- AngularJS code -->
+    <script src="js/app.js"></script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -201,7 +238,7 @@ data-trigger='hover' data-toggle="popover"
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"></script>
 
-          <!-- bootbox code -->
+    <!-- bootbox code -->
     <script src="js/bootbox.min.js"></script>
     <script src="js/bootbox.locales.min.js"></script>
     <script>
@@ -216,7 +253,7 @@ data-trigger='hover' data-toggle="popover"
 
 });
 </script>
-<script>
+    <script>
 $(function () {
   $('[data-toggle="popover"]').popover()
 })
@@ -224,5 +261,3 @@ $(function () {
   </body>
 
 </html>
-
-

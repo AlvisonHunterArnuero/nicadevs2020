@@ -1,24 +1,24 @@
 {
   "directorio": [
     {
-      "title": "Front End Developer",
+      "title": "Front End Developer & Visual Designer",
       "language": "JavaScript, VB.NET, C#",
-      "framework": "AngularJS, VueJS",
+      "framework": "AngularJS, Vue.JS",
       "library": "ReactJS",
       "learning": "Python, ReduxJS",
-      "workplace": "Solid Logix LLC",
+      "workplace": "SolidLogix LLC",
       "name": "Alvison Hunter",
       "twitter": "https://twitter.com/allwissendjager",
       "linkedin": "https://www.linkedin.com/in/alvison-hunter-01512773/"
     },
     {
       "title": "Systems Engineer",
-      "language": "PHP, Javascript, VB.NET",
+      "language": "PHP, Javascript, VB.NET, Python",
       "framework": ".NET",
-      "library": "JQuery",
-      "learning": "SQL DB, Java, Phyton, Linux, MS Windows Server",
+      "library": "jQuery",
+      "learning": "MySQL,Java, Linux, Windows Server",
       "workplace": "Freelancer",
-      "name": "Engel Towers",
+      "name": "Engel Torrez",
       "twitter": "",
       "linkedin": ""
     },
@@ -28,10 +28,10 @@
       "framework": ".NET Core",
       "library": "Accord.NET",
       "learning": "Golang, Angular",
-      "workplace": "Chaps-Olean",
+      "workplace": "Consulting Group",
       "name": "Ernesto Gutierrez",
       "twitter": "https://twitter.com/eblind39",
-      "linkedin": ""
+      "linkedin": "https://www.linkedin.com/in/ernesto-gutierrez-99349b12a/"
     },
     {
       "title": "Web Programmer",
@@ -42,18 +42,18 @@
       "workplace": "Nica Source",
       "name": "Kathya Sarria",
       "twitter": "https://twitter.com/SarriaKathya",
-      "linkedin": ""
+      "linkedin": "https://www.linkedin.com/in/kathya-sarria-campbell-6a9771177/"
     },
     {
       "title": "Web Application Developer",
-      "language": "JavaScript, PHP",
-      "framework": "VueJS",
-      "library": "Element UI",
+      "language": "JavaScript, LAMP, PHP, Laravel, MySQL",
+      "framework": "Vue.JS",
+      "library": "React.JS, jQuery, Ajax",
       "learning": "TypeScript",
       "workplace": "True Apex",
       "name": "Antonio Flores",
       "twitter": "",
-      "linkedin": ""
+      "linkedin": "https://www.linkedin.com/in/antonio-flores-914a77154/"
     },
     {
       "title": "Web Developer",

@@ -1,58 +1,81 @@
 {
   "directorio": [
     {
-      "title": "Front End Developer",
+      "title": "Front End Developer & Visual Designer",
       "language": "JavaScript, VB.NET, C#",
-      "framework":"AngularJS, VueJS",
-      "library":"ReactJS",
-      "learning":"Python, ReduxJS",
-      "workplace":"Solid Logix LLC",
-      "name": "Alvison Hunter"
+      "framework": "AngularJS, Vue.JS",
+      "library": "ReactJS",
+      "learning": "Python, ReduxJS",
+      "workplace": "SolidLogix LLC",
+      "name": "Alvison Hunter",
+      "twitter": "https://twitter.com/allwissendjager",
+      "linkedin": "https://www.linkedin.com/in/alvison-hunter-01512773/"
+    },
+    {
+      "title": "Systems Engineer",
+      "language": "PHP, Javascript, VB.NET, Python",
+      "framework": ".NET",
+      "library": "jQuery",
+      "learning": "MySQL,Java, Linux, Windows Server",
+      "workplace": "Freelancer",
+      "name": "Engel Torrez",
+      "twitter": "",
+      "linkedin": ""
     },
     {
       "title": "Full Stack Developer",
       "language": "JavaScript, VB.NET, C#, Python",
-      "framework":".NET Core",
-      "library":"Accord.NET",
-      "learning":"Golang, Angular",
-      "workplace":"Chaps-Olean",
-      "name": "Ernesto Gutierrez"
+      "framework": ".NET Core",
+      "library": "Accord.NET",
+      "learning": "Golang, Angular",
+      "workplace": "Consulting Group",
+      "name": "Ernesto Gutierrez",
+      "twitter": "https://twitter.com/eblind39",
+      "linkedin": "https://www.linkedin.com/in/ernesto-gutierrez-99349b12a/"
     },
     {
       "title": "Web Programmer",
       "language": "JavaScript",
-      "framework":"CypressJS",
-      "library":"Cypress Testing Library",
-      "learning":"Python, ES6",
-      "workplace":"Nica Source",
-      "name": "Kathya Sarria"
+      "framework": "CypressJS",
+      "library": "Cypress Testing Library",
+      "learning": "Python, ES6",
+      "workplace": "Nica Source",
+      "name": "Kathya Sarria",
+      "twitter": "https://twitter.com/SarriaKathya",
+      "linkedin": "https://www.linkedin.com/in/kathya-sarria-campbell-6a9771177/"
     },
     {
       "title": "Web Application Developer",
-      "language": "JavaScript, PHP",
-      "framework":"VueJS",
-      "library":"Element UI",
-      "learning":"TypeScript",
-      "workplace":"True Apex",
-      "name": "Antonio Flores"
+      "language": "JavaScript, LAMP, PHP, Laravel, MySQL",
+      "framework": "Vue.JS",
+      "library": "React.JS, jQuery, Ajax",
+      "learning": "TypeScript",
+      "workplace": "True Apex",
+      "name": "Antonio Flores",
+      "twitter": "",
+      "linkedin": "https://www.linkedin.com/in/antonio-flores-914a77154/"
     },
     {
       "title": "Web Developer",
       "language": "Python",
-      "framework":"Django",
-      "library":"Pyglet",
-      "learning":"JavaScript,PHP",
-      "workplace":"Accedo Technologies",
-      "name": "Marvin Obando"
+      "framework": "Django",
+      "library": "Pyglet",
+      "learning": "JavaScript,PHP",
+      "workplace": "Accedo Technologies",
+      "name": "Marvin Obando",
+      "twitter": "",
+      "linkedin": ""
     },
     {
       "title": "Full Stack Developer",
       "language": "Python, PHP, Javascript",
-      "framework":"Laravel",
-      "library":"Swiftmailer",
-      "learning":"TypeScript, ReactJS",
-      "workplace":"Accedo Technologies",
-      "name": "Augusto Martinez"
+      "framework": "Laravel",
+      "library": "Swiftmailer",
+      "learning": "TypeScript, ReactJS",
+      "workplace": "Accedo Technologies",
+      "name": "Augusto Martinez",
+      "twitter": "",
+      "linkedin": ""
     }
   ]
 }

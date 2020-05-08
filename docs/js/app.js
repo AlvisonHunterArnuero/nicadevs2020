@@ -13,7 +13,7 @@ app.controller("customersCtrl", function ($scope) {
 
     req.open(
       "GET",
-      "https://api.jsonbin.io/b/5eb2316247a2266b14739360/2",
+      "https://api.jsonbin.io/b/5eb2316247a2266b14739360/3",
       true
     );
     req.setRequestHeader(
