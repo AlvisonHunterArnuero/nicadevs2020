@@ -14,7 +14,26 @@
       small excercise. It will be a CRUD later on." />
   <meta name="revised" content="Alvison Hunter, 5/6/2020" />
   <meta name="author" content="Alvison Hunter Arnuero" />
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+    <!-- bootbox code -->
+    <script src="js/bootbox.min.js"></script>
+    <script src="js/bootbox.locales.min.js"></script>
+    <script src="./js/jQueryScripts.js"></script>
+
+
+
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/slate/bootstrap.min.css" rel="stylesheet"
@@ -25,8 +44,11 @@
 <body ng-app="myApp">
   <div ng-controller="customersCtrl">
     <div class="row justify-content-end">
-      <p class="text-info mx-4 my-3"><i class="fa fa-sign-out" aria-hidden="true"></i> Currently Browsing as: <b
-          id="visitor" class="text-warning">Guest</b></p< /div>
+<p class="text-info mx-4 my-3">
+          <i class="fa fa-sign-out" aria-hidden="true"></i>
+        Currently Browsing as: <b id="userID" class="text-warning">Guest</b>
+</p>
+    </div>
       <div class="container-fluid px-3">
         <div class="row border-top border-info border-bottom
           justify-content-center mb-4">
@@ -157,7 +179,7 @@
                             text-white">
                             <i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
                         </div>
-                        <div class="col-auto">
+                        <div ng-if="isAdmin" class="col-auto">
 
                           <a ng-href="/" class="h2 card-link
                             text-info"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -191,37 +213,8 @@
         </div>
       </div>
     </div>
-    <!-- AngularJS code -->
+        <!-- AngularJS code -->
     <script src="js/app.js"></script>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"></script>
-
-    <!-- bootbox code -->
-    <script src="js/bootbox.min.js"></script>
-    <script src="js/bootbox.locales.min.js"></script>
-    <script>
-      $(document).ready(function () {
-        // let us prompt for the name of the person for the
-        // moment, eventually we will authenticate this
-        bootbox.prompt({
-          title: "Please provide us with your name.",
-          centerVertical: true,
-          callback: function (result) {
-            result ? $("#visitor").html(result) : $("#visitor").html("Guest");
-          }
-        });
-
-      });
-    </script>
     <script>
       $(function () {
         $('[data-toggle="popover"]').popover()
