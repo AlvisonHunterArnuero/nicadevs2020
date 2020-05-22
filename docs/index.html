@@ -56,15 +56,24 @@
                <form>
                   <div class="form-group">
                      <label>User Name</label>
-                     <input ng-model="userName" type="text" class="form-control" placeholder="User Name">
+                     <input ng-model="userName" type="text" class="form-control" placeholder="User Name" required>
                   </div>
                   <div class="form-group">
                      <label>Password</label>
-                     <input ng-model="userPwd" type="password" class="form-control" placeholder="Password">
+                     <input ng-model="userPwd" type="password" class="form-control" placeholder="Password" required>
                   </div>
-                  <button ng-click="fnLogon()" type="button" class="btn btn-black">Login</button>
-                  <button type="button" class="btn btn-secondary mx-2">Register</button>
+                  <div class="row justify-content-between">
+                  <button ng-click="fnLogon()" type="button" class="text-uppercase btn btn-block btn-black mx-2">Login</button>
+                  <button type="button" class="text-uppercase btn btn-block btn-secondary mx-2 my-2">
+<i class="fa fa-user-plus" aria-hidden="true"></i>
+                    Register</button>
+                  </div>
+
                </form>
+               <div n-if="isLoginError"class="row text-danger justify-content-center">
+  {{loginMsg}}
+               </div>
+
             </div>
          </div>
       </div>
@@ -78,7 +87,7 @@
     <div class="row justify-content-end">
             <p class="text-info mx-3 my-2">
         <i class="fa fa-sign-out" aria-hidden="true"></i>
-        Currently Browsing as: <b id="userID" class="text-warning">{{currentUser}}</b>
+        Currently Browsing as: <b id="userID" class="text-warning">{{userName}}</b>
 </p>
     </div>
     <div class="container-fluid px-3">

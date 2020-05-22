@@ -2,9 +2,11 @@ let app = angular.module("myApp", []);
 app.controller("customersCtrl", function ($scope) {
   // boolean objects
   $scope.isAdmin = false;
+  $scope.isLoginError = false;
   $scope.isLogged = false;
-  $scope.msg = "-";
-  $scope.userName = "Alvison Hunter";
+  $scope.msg = "";
+  $scope.loginMsg = "";
+  $scope.userName = "";
   $scope.userPwd = "";
   $scope.editModeOn = false;
   $scope.newModeOn = true;
@@ -146,14 +148,34 @@ app.controller("customersCtrl", function ($scope) {
   // LOGON DETAILS
 
   $scope.fnLogon = function () {
-    $scope.isLogged = true;
+    $scope.isLoginError = false;
+    // let's validate if the array has been fetched from the API already
     const tempArray = $scope.names ? $scope.names : null;
+    // using a local scope array to iterate with it just in this function
     let tempUserName = $scope.userName;
     const devNames = tempArray.filter((dev) => dev.name == tempUserName);
-    const userRole = tempArray.filter((dev) => dev.role == "admin");
-    // Let us evaluate if this user is an admin and can access the admin rights
-    $scope.msg = "The user has successfully logged in.";
-    return !userRole ? ($scope.isAdmin = false) : ($scope.isAdmin = true);
+    console.log("DEV NAMES: ", devNames);
+    // If the Login Username exists, then we can enable the content
+
+    if (Array.isArray(devNames) != "undefined" && devNames.length != 0) {
+      $scope.isLogged = true;
+      // Let us get the name and role for this user
+      const userRole = tempArray.filter(
+        (dev) => dev.name == tempUserName && dev.role == "admin"
+      );
+      console.log("THIS IS THE USER ROLE STATUS: ", userRole);
+      // Let us evaluate if this user is an admin and can access the admin rights
+      let x =
+        userRole == null ? ($scope.isAdmin = false) : ($scope.isAdmin = true);
+      console.log("USER ROLES: ", x);
+      $scope.msg = "The user has successfully logged in.";
+    } else {
+      $scope.isLogged = false;
+      $scope.isLoginError = true;
+      $scope.loginMsg = "Login failed: Invalid username or password.";
+      return;
+    }
+    return $scope.isLogged;
   };
 
   // ------------------ INITIAL DATA FETCHING FUNCTION --------------------
@@ -167,7 +189,7 @@ app.controller("customersCtrl", function ($scope) {
     console.log("Nuevo Valor", newval);
   });
 
-  // $scope.$watch("names", function (newval, oldval) {
-  //   console.log("Monitoring the names array behavior and updates");
-  // });
+  $scope.$watch("userName", function (newval, oldval) {
+    newval ? ($scope.isLoginError = false) : ($scope.isLoginError = true);
+  });
 });
