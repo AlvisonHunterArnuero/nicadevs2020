@@ -15,22 +15,22 @@
   <meta name="revised" content="Alvison Hunter, 5/6/2020" />
   <meta name="author" content="Alvison Hunter Arnuero" />
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"></script>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
-    <!-- bootbox code -->
-    <script src="js/bootbox.min.js"></script>
-    <script src="js/bootbox.locales.min.js"></script>
-    <script src="./js/jQueryScripts.js"></script>
+  <!-- bootbox code -->
+  <script src="js/bootbox.min.js"></script>
+  <script src="js/bootbox.locales.min.js"></script>
+  <script src="./js/jQueryScripts.js"></script>
 
 
 
@@ -41,184 +41,322 @@
   <link rel="stylesheet" type="text/css" href="./css/styles.css" />
 </head>
 
-<body ng-app="myApp">
-  <div ng-controller="customersCtrl">
+<body ng-app="myApp" ng-controller="customersCtrl">
+ <!-- LOGIN SCREEN STARTS HERE -->
+<div ng-show="!isLogged" class="container">
+<div class="sidenav">
+         <div class="login-main-text">
+            <h2 class="text-info">Nica Web Developers Profiles Directory</h2>
+            <p class="lead text-warning">Login from here to access our dashboard.</p>
+         </div>
+      </div>
+      <div class="main">
+         <div class="col-md-6 col-sm-12">
+            <div class="login-form">
+               <form>
+                  <div class="form-group">
+                     <label>User Name</label>
+                     <input ng-model="userName" type="text" class="form-control" placeholder="User Name">
+                  </div>
+                  <div class="form-group">
+                     <label>Password</label>
+                     <input ng-model="userPwd" type="password" class="form-control" placeholder="Password">
+                  </div>
+                  <button ng-click="fnLogon()" type="button" class="btn btn-black">Login</button>
+                  <button type="button" class="btn btn-secondary mx-2">Register</button>
+               </form>
+            </div>
+         </div>
+      </div>
+</div>
+<!-- LOGIN SCREEN ENDS HERE -->
+
+
+<!-- Main Content -->
+<div ng-if="isLogged" class="container-fluid">
+  <div>
     <div class="row justify-content-end">
-<p class="text-info mx-4 my-3">
-          <i class="fa fa-sign-out" aria-hidden="true"></i>
-        Currently Browsing as: <b id="userID" class="text-warning">Guest</b>
+            <p class="text-info mx-3 my-2">
+        <i class="fa fa-sign-out" aria-hidden="true"></i>
+        Currently Browsing as: <b id="userID" class="text-warning">{{currentUser}}</b>
 </p>
     </div>
-      <div class="container-fluid px-3">
-        <div class="row border-top border-info border-bottom
+    <div class="container-fluid px-3">
+      <div class="row border-top border-info border-bottom
           justify-content-center mb-4">
-          <h1 class="text-info display-4 my-3 pb-2"><i class="fa
-              fa-address-book-o" aria-hidden="true"></i> Nica Web Developers
-            Profiles
-            Directory</h1>
-        </div>
-        <div class="row">
-          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-            <!-- <span class="text-uppercase text-white h4">Search By Name: </span> -->
-            <label for="topName" class="col-form-label text-uppercase text-white
+        <h1 class="text-info display-4 my-3 pb-2"><i class="fa
+              fa-address-book-o" aria-hidden="true"></i> Nica Web Developers Profiles Directory</h1>
+ <input disabled class="text-center ui-input-text form-control form-control-sm bg-dark"
+        type="text" ng-model="msg"
+             />
+      </div>
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+          <!-- <span class="text-uppercase text-white h4">Search By Name: </span> -->
+          <label for="topName" class="col-form-label text-uppercase text-white
               h3">Search By Name</label>
 
-            <input id="topName" class="form-control mr-sm-2" type="text" ng-model="nameFilter"
-              placeholder="Search by Name..." />
-          </div>
-          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
-            <label for="topLanguage" class="col-form-label text-uppercase
+          <input id="topName" class="form-control mr-sm-2" type="text" ng-model="nameFilter"
+            placeholder="Search by Name..." />
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+          <label for="topLanguage" class="col-form-label text-uppercase
               text-white
               h3">Search By Language</label>
-            <input id="topLanguage" class="form-control" type="text" ng-model="languageFilter"
-              placeholder="Search by Language..." />
-          </div>
-          <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+          <input id="topLanguage" class="form-control" type="text" ng-model="languageFilter"
+            placeholder="Search by Language..." />
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
 
-            <label for="topTitle" class="col-form-label text-uppercase
+          <label for="topTitle" class="col-form-label text-uppercase
               text-white h3">Search By Title</label>
-            <select id="topTitle" class="form-control" ng-model="titleFilter" placeholder="Search by Title" />
-            <option value="">Select a Title...<title></title>
-            </option>
-            <option value="Systems Engineer">Systems Engineer</option>
-            <option value="Front End Developer">Front End Developer</option>
-            <option value="Full Stack Developer">Full Stack Developer</option>
-            <option value="Web Programmer">Web Programmer</option>
-            <option value="Web Application Developer">Web Application
-              Developer</option>
-            <option value="Web Developer">Web Developer</option>
-            </select>
-          </div>
+          <select id="topTitle" class="form-control" ng-model="titleFilter"
+          placeholder="Search by Title" />
+          <option value="">Select a Title...<title></title>
+          </option>
+          <option value="Systems Engineer">Systems Engineer</option>
+          <option value="Front End Developer">Front End Developer</option>
+          <option value="Full Stack Developer">Full Stack Developer</option>
+          <option value="Web Programmer">Web Programmer</option>
+          <option value="Web Application Developer">Web Application
+            Developer</option>
+          <option value="Web Developer">Web Developer</option>
+          </select>
         </div>
-        <div class="row mb-2 pb-3">
-          <div ng-if="$scope.names.length === 0">
-            <pre>No item was found on this list...</pre>
-          </div>
+      </div>
+      <div class="row mb-2 pb-3">
+        <div ng-if="$scope.names.length === 0">
+          <pre>No item was found on this list...</pre>
         </div>
-        <nav>
-          <!-- Begin of the tab sections -->
-          <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <a class="nav-item nav-link active" id="nav-tables-tab" data-toggle="tab" href="#nav-tables" role="tab"
-              aria-controls="nav-tables" aria-selected="true">Table View</a>
-            <a class="nav-item nav-link" id="nav-cards-tab" data-toggle="tab" href="#nav-cards" role="tab"
-              aria-controls="nav-cards" aria-selected="false">Cards View</a>
-          </div>
-        </nav>
-        <div class="tab-content mb-3" id="nav-tabContent">
-          <div class="tab-pane fade show active" id="nav-tables" role="tabpanel" aria-labelledby="nav-tables-tab">
-            <div class="table-responsive">
+      </div>
+      <nav>
+        <!-- Begin of the tab sections -->
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <a class="nav-item nav-link active" id="nav-tables-tab" data-toggle="tab" href="#nav-tables" role="tab"
+            aria-controls="nav-tables" aria-selected="true"><i class="fa fa-table" aria-hidden="true"></i> Table
+            View</a>
+          <a class="nav-item nav-link" id="nav-cards-tab" data-toggle="tab" href="#nav-cards" role="tab"
+            aria-controls="nav-cards" aria-selected="false"><i class="fa fa-id-card-o" aria-hidden="true"></i> Cards
+            View</a>
 
-              <table class="table table table-striped table-hover my-3 small">
-                <thead>
-                  <tr>
-                    <th class="info text-center"><strong class="text-uppercase">Photo</strong></th>
-                    <th class="info text-center"><strong class="text-uppercase">Name</strong></th>
-                    <th class="info text-center"><strong class="text-uppercase">Title</strong></th>
-                    <th class="info text-center"><strong class="text-uppercase">Language</strong></th>
-                    <th class="info text-center"><strong class="text-uppercase">Framework</strong></th>
-                    <th class="info text-center"><strong class="text-uppercase">Library</strong></th>
-                    <th class="info text-center"><strong class="text-uppercase">Workplace</strong></th>
-                    <th class="info text-center"><strong class="text-uppercase">Currently
-                        Learning</strong></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr ng-repeat="x in names | filter: nameFilter | filter:
-                    languageFilter | filter: titleFilter | orderBy : 'name'">
-                    <td style="text-align: center;"><img class="thumbDeveloper" height="60" width="60"
-                        ng-src="assets/{{x.name}}.jpeg" /></td>
-                    <td style="text-align: center;">{{ x.name }}</td>
-                    <td style="text-align: center;">{{ x.title }}</td>
-                    <td style="text-align: center;">{{ x.language }}</td>
-                    <td style="text-align: center;">{{ x.framework }}</td>
-                    <td style="text-align: center;">{{ x.library }}</td>
-                    <td style="text-align: center;">{{ x.workplace }}</td>
-                    <td style="text-align: center;">{{ x.learning }}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div> <!-- End of the table view  track by $index  -->
-          <div class="tab-pane fade" id="nav-cards" role="tabpanel" aria-labelledby="nav-cards-tab">
-            <div class="container-fluid">
-              <div class="row justify-content-center">
-                <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-3" ng-repeat="developer in names | filter: nameFilter | filter:
-                  languageFilter | filter: titleFilter">
-                  <div class="card border-secondary mb-3">
-                    <img class="card-img-top" ng-src="assets/{{developer.name}}.jpeg" :alt="{{ developer.name }}" />
-                    <div class="card-body">
-                      <h3 class="card-title text-uppercase text-warning">{{
+        </div>
+      </nav>
+      <div class="tab-content mb-3" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-tables" role="tabpanel" aria-labelledby="nav-tables-tab">
+          <div class="table-responsive">
+            <table class="table table table-striped table-hover my-3 small">
+              <thead>
+                <tr>
+                  <th class="info text-center"><strong class="text-uppercase">Photo</strong></th>
+                  <th class="info text-center"><strong class="text-uppercase">Name</strong></th>
+                  <th class="info text-center"><strong class="text-uppercase">Title</strong></th>
+                  <th class="info text-center"><strong class="text-uppercase">Language</strong></th>
+                  <th class="info text-center"><strong class="text-uppercase">Framework</strong></th>
+                  <th class="info text-center"><strong class="text-uppercase">Library</strong></th>
+                  <th class="info text-center"><strong class="text-uppercase">Workplace</strong></th>
+                  <th class="info text-center"><strong class="text-uppercase">Currently
+                      Learning</strong></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="x in names | filter: nameFilter | filter:
+                    languageFilter | filter: titleFilter track by $index">
+                  <td style="text-align: center;"><img class="thumbDeveloper" height="60" width="60"
+                      ng-src="assets/{{x.name}}.jpeg" /></td>
+                  <td style="text-align: center;">{{ x.name }}</td>
+                  <td style="text-align: center;">{{ x.title }}</td>
+                  <td style="text-align: center;">{{ x.language }}</td>
+                  <td style="text-align: center;">{{ x.framework }}</td>
+                  <td style="text-align: center;">{{ x.library }}</td>
+                  <td style="text-align: center;">{{ x.workplace }}</td>
+                  <td style="text-align: center;">{{ x.learning }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div> <!-- End of the table view Tab -->
+        <div class="tab-pane fade" id="nav-cards" role="tabpanel" aria-labelledby="nav-cards-tab">
+          <div class="container-fluid">
+            <div class="row justify-content-center">
+              <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-3" ng-repeat="developer in names | filter: nameFilter | filter:
+                  languageFilter | filter: titleFilter track by $index">
+                <div class="card border-secondary mb-3">
+                  <img class="card-img-top"
+                  ng-src="assets/{{ developer.name }}.jpeg">
+                  <!-- <img class="card-img-top" ng-src="assets/{{developer.name}}.jpeg"
+                  :alt="{{ developer.name }}" /> -->
+                  <div class="card-body">
+                    <h3 class="card-title text-uppercase text-warning">{{
                         developer.name }}</h3>
-                      <p class="card-text"><strong class="text-uppercases
+                    <p class="card-text"><strong class="text-uppercases
                           text-success">{{ developer.title }}</strong> </p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item"><strong class="text-uppercase
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong class="text-uppercase
                           text-secondary">Language:
-                        </strong>{{ developer.language }}</li>
-                      <li class="list-group-item"><strong class="text-uppercase
+                      </strong>{{ developer.language }}</li>
+                    <li class="list-group-item"><strong class="text-uppercase
                           text-secondary">Framework:
-                        </strong>{{ developer.framework }}</li>
-                      <li class="list-group-item"><strong class="text-uppercase
+                      </strong>{{ developer.framework }}</li>
+                    <li class="list-group-item"><strong class="text-uppercase
                           text-secondary">Library:
-                        </strong>{{ developer.library }}</li>
-                      <li class="list-group-item"><strong class="text-uppercase
+                      </strong>{{ developer.library }}</li>
+                    <li class="list-group-item"><strong class="text-uppercase
                           text-secondary">Workplace:
-                        </strong>{{ developer.workplace }}</li>
-                      <li class="list-group-item"><strong class="text-uppercase
+                      </strong>{{ developer.workplace }}</li>
+                    <li class="list-group-item"><strong class="text-uppercase
                           text-secondary">Currently Learning:
-                        </strong>{{ developer.learning }}</li>
-                    </ul>
-                    <div class="card-body">
-                      <div class="row justify-content-between">
-                        <div class="col-auto">
-                          <a ng-href="{{developer.twitter}}" class="h2 card-link
+                      </strong>{{ developer.learning }}</li>
+                  </ul>
+                  <div class="card-body">
+                    <div class="row justify-content-between">
+                      <div class="col-auto">
+                        <a ng-href="{{developer.twitter}}" class="h2 card-link
                             text-white"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                          <a ng-href="{{developer.linkedin}}" class="h2
+                        <a ng-href="{{developer.linkedin}}" class="h2
                             card-link
                             text-white">
-                            <i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
-                        </div>
-                        <div ng-if="isAdmin" class="col-auto">
+                          <i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                      </div>
+                      <div ng-if="isAdmin" class="col-auto">
+                        <a ng-click="fnEditDeveloper(developer, $index)" class="h2 card-link
+                            text-info"  data-toggle="modal" ng-href=".bd-example-modal-lg">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </a>
 
-                          <a ng-href="/" class="h2 card-link
-                            text-info"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                          </a>
-
-                          <a ng-click="fnDeleteDeveloper($index)" class="h2 card-link
+                        <a ng-click="fnDeleteDeveloper($index)" class="h2 card-link
                             text-danger"><i class="fa fa-trash-o" aria-hidden="true"></i>
-                          </a>
-                        </div>
+                        </a>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div> <!-- End of the Cards view  -->
-        </div> <!-- End of the tab sections -->
-      </div> <!-- End of the main container -->
-    </div> <!-- End of the ng-app div -->
+          </div>
+        </div> <!-- End of the Cards view Tab -->
 
-    <div id="footer">
-      <div class="container">
-        <div class="row justify-content-center">
-          <p class="text-muted mx-1"> © Copyright May 6th, 2020
-            NicaWebDevsProfiles | <b data-trigger='hover' data-toggle="popover" title="About the developer"
-              data-placement="top" data-content="Web Developer, Angular, VueJS & ReactJS Fan, VB .Net
+
+<!-- Large modal button launcher for new Profiles -->
+ <a ng-click="fnDeveloper()" class="h4 card-link text-warning"  data-toggle="modal" ng-href=".bd-example-modal-lg">
+ <i class="fa fa-plus-square" aria-hidden="true"></i> Add New Profile</a>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+          <div class="container">
+            <div class="card my-3">
+              <h5 class="card-header"><i class="fa fa-user-circle-o" aria-hidden="true"></i> ADD NEW PROFILE</h5>
+              <div class="card-body">
+                <form>
+                  <div class="row my-3">
+                    <div class="col">
+                      <label class="text-info" for="name">First & Last Name:</label>
+                      <input ng-model="payload.name" id="name" type="text" class="form-control"
+                        placeholder="Type your First & Last Name">
+                    </div>
+                    <div class="col">
+                      <label for="title">Title:</label>
+                      <input ng-model="payload.title" id="title" type="text" class="form-control"
+                        placeholder="Please type in your Title">
+                    </div>
+                  </div>
+                  <div class="row my-3">
+                    <div class="col">
+                      <label for="photoURL">Photo URL [must be 200x200 px]:</label>
+                      <input ng-model="payload.photoURL" id="photoURL" type="text" class="form-control"
+                        placeholder="Type the URL of your phot">
+                    </div>
+                    <div class="col">
+                      <label for="language">Language:</label>
+                      <input ng-model="payload.language" id="language" type="text" class="form-control"
+                        placeholder="What is your main programming Language?">
+                    </div>
+                  </div>
+                  <div class="row my-3">
+                    <div class="col">
+                      <label for="framework">Framework:</label>
+                      <input ng-model="payload.framework" id="framework" type="text" class="form-control"
+                        placeholder="What is your favorite Framework?">
+                    </div>
+                    <div class="col">
+                      <label for="library">Library:</label>
+                      <input ng-model="payload.library" id="library" type="text" class="form-control"
+                        placeholder="What is your favorite Library?">
+                    </div>
+                  </div>
+                  <div class="row my-3">
+                    <div class="col">
+                      <label for="workplace">Workplace:</label>
+                      <input ng-model="payload.workplace" id="workplace" type="text" class="form-control"
+                        placeholder="Where do you work?">
+                    </div>
+                    <div class="col">
+                      <label for="learning">Currently Learning:</label>
+                      <input ng-model="payload.learning" id="learning" type="text" class="form-control"
+                        placeholder="What are you learning at this moment?">
+                    </div>
+                  </div>
+                  <div class="row my-3">
+                    <div class="col">
+                      <label for="twitter">Twitter Account:</label>
+                      <input ng-model="payload.twitter" id="twitter" type="text" class="form-control"
+                        placeholder="Twitter Account URL?">
+                    </div>
+                    <div class="col">
+                      <label for="linkedIn">LinkedIn Account:</label>
+                      <input ng-model="payload.linkedIn" id="linkedIn" type="text" class="form-control"
+                        placeholder="LinkedIn Account URL?">
+                    </div>
+
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+
+  <div class="modal-footer">
+    <button ng-if="newModeOn" ng-click="fnSaveDeveloper()"
+    type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-floppy-o"
+                    aria-hidden="true"></i> Save changes</button>
+
+    <button ng-if="editModeOn" ng-click="fnUpdateDeveloper()"
+    type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-floppy-o"
+                    aria-hidden="true"></i> Update changes</button>
+
+    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-ban" aria-hidden="true"></i> Cancel</button>
+  </div>
+
+    </div>
+  </div>
+</div>
+</div> <!-- End of the tab sections -->
+ </div> <!-- End of the main container -->
+  </div> <!-- End of the ng-app div -->
+  <div id="footer">
+    <div class="container">
+      <div class="row justify-content-center">
+        <p class="text-muted mx-1"> © Copyright May 6th, 2020
+          NicaWebDevsProfiles | <b data-trigger='hover' data-toggle="popover" title="About the developer"
+            data-placement="top" data-content="Web Developer, Angular, VueJS & ReactJS Fan, VB .Net
               coder, UX/UI design, Drummer, Bassist, Piano & Guitar Player,
               Husband & Proud Father of Two Brave Warriors.">Alvison
-              Made With ❤ by Alvison hunter with
-              with AngularJS.</b></p>
-        </div>
+            Made With ❤ by Alvison hunter with
+            with AngularJS.</b></p>
       </div>
     </div>
-        <!-- AngularJS code -->
-    <script src="js/app.js"></script>
-    <script>
-      $(function () {
-        $('[data-toggle="popover"]').popover()
-      })
-    </script>
+  </div>
+</div>
+<!-- End of Main Content -->
+
+  <!-- AngularJS code -->
+  <script src="js/app.js"></script>
+  <script>
+    $(function () {
+      $('[data-toggle="popover"]').popover()
+    })
+  </script>
 </body>
+
 </html>

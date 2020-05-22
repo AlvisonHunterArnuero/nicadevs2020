@@ -9,7 +9,11 @@
       "workplace": "SolidLogix LLC",
       "name": "Alvison Hunter",
       "twitter": "https://twitter.com/allwissendjager",
-      "linkedin": "https://www.linkedin.com/in/alvison-hunter-01512773/"
+      "linkedin": "https://www.linkedin.com/in/alvison-hunter-01512773/",
+      "photoURL": "",
+      "role": "admin",
+      "username": "",
+      "password": ""
     },
     {
       "title": "Systems Engineer",
@@ -20,7 +24,11 @@
       "workplace": "Freelancer",
       "name": "Engel Torrez",
       "twitter": "",
-      "linkedin": ""
+      "linkedin": "",
+      "photoURL": "",
+      "role": "",
+      "username": "",
+      "password": ""
     },
     {
       "title": "Full Stack Developer",
@@ -31,7 +39,11 @@
       "workplace": "Consulting Group",
       "name": "Ernesto Gutierrez",
       "twitter": "https://twitter.com/eblind39",
-      "linkedin": "https://www.linkedin.com/in/ernesto-gutierrez-99349b12a/"
+      "linkedin": "https://www.linkedin.com/in/ernesto-gutierrez-99349b12a/",
+      "photoURL": "",
+      "role": "",
+      "username": "",
+      "password": ""
     },
     {
       "title": "Web Programmer",
@@ -42,7 +54,11 @@
       "workplace": "Nica Source",
       "name": "Kathya Sarria",
       "twitter": "https://twitter.com/SarriaKathya",
-      "linkedin": "https://www.linkedin.com/in/kathya-sarria-campbell-6a9771177/"
+      "linkedin": "https://www.linkedin.com/in/kathya-sarria-campbell-6a9771177/",
+      "photoURL": "",
+      "role": "",
+      "username": "",
+      "password": ""
     },
     {
       "title": "Web Application Developer",
@@ -53,7 +69,11 @@
       "workplace": "True Apex",
       "name": "Antonio Flores",
       "twitter": "",
-      "linkedin": "https://www.linkedin.com/in/antonio-flores-914a77154/"
+      "linkedin": "https://www.linkedin.com/in/antonio-flores-914a77154/",
+      "photoURL": "",
+      "role": "",
+      "username": "",
+      "password": ""
     },
     {
       "title": "Web Developer",
@@ -64,7 +84,26 @@
       "workplace": "Accedo Technologies",
       "name": "Marvin Obando",
       "twitter": "",
-      "linkedin": ""
+      "linkedin": "",
+      "photoURL": "",
+      "role": "",
+      "username": "",
+      "password": ""
+    },
+    {
+      "title": "Full Stack Developer",
+      "language": "JavaScript",
+      "framework": "VueJS",
+      "library": "ReactJS",
+      "learning": "TypeScript, Gatsby",
+      "workplace": "Solid Logix LLC",
+      "name": "Billi Ramirez",
+      "twitter": "",
+      "linkedin": "",
+      "photoURL": "",
+      "role": "",
+      "username": "",
+      "password": ""
     },
     {
       "title": "Full Stack Developer",
@@ -75,7 +114,11 @@
       "workplace": "Accedo Technologies",
       "name": "Augusto Martinez",
       "twitter": "",
-      "linkedin": ""
+      "linkedin": "",
+      "photoURL": "",
+      "role": "",
+      "username": "",
+      "password": ""
     }
   ]
 }
