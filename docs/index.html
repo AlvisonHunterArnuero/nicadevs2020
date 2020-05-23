@@ -27,6 +27,7 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-animate/1.7.9/angular-animate.js" integrity="sha256-XU9ZSbxfycFUAnmln+SQefeW7B64i1PPDUNyAXWQALk=" crossorigin="anonymous"></script>
   <!-- bootbox code -->
   <script src="js/bootbox.min.js"></script>
   <script src="js/bootbox.locales.min.js"></script>
@@ -44,33 +45,47 @@
 <body ng-app="myApp" ng-controller="customersCtrl">
  <!-- LOGIN SCREEN STARTS HERE -->
 <div ng-show="!isLogged" class="container">
-<div class="sidenav">
+      <div class="sidenav">
          <div class="login-main-text">
             <h2 class="text-info">Nica Web Developers Profiles Directory</h2>
-            <p class="lead text-warning">Login from here to access our dashboard.</p>
+            <p class="lead text-warning text-center">Alone we can do so little; together we can do so much.</p>
          </div>
       </div>
-      <div class="main">
-         <div class="col-md-6 col-sm-12">
+      <div class="main my-3">
+         <div class="col-12 col-sm-12 col-md-10 col-xl-8">
             <div class="login-form">
                <form>
-                  <div class="form-group">
-                     <label>User Name</label>
-                     <input ng-model="userName" type="text" class="form-control" placeholder="User Name" required>
-                  </div>
-                  <div class="form-group">
-                     <label>Password</label>
-                     <input ng-model="userPwd" type="password" class="form-control" placeholder="Password" required>
-                  </div>
-                  <div class="row justify-content-between">
-                  <button ng-click="fnLogon()" type="button" class="text-uppercase btn btn-block btn-black mx-2">Login</button>
-                  <button type="button" class="text-uppercase btn btn-block btn-secondary mx-2 my-2">
+
+<div class="input-group mb-3">
+
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1"><i class="fa fa-user-circle-o" aria-hidden="true"></i></span>
+  </div>
+ <input ng-model="userName" type="text" class="form-control" placeholder="Username" aria-label="Username"
+ aria-describedby="basic-addon1" required>
+</div>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon2"><i class="fa fa-key" aria-hidden="true"></i></span>
+  </div>
+
+  <input ng-model="userPwd" type="password" class="form-control" placeholder="Password"
+  aria-label="Username" aria-describedby="basic-addon2" required>
+</div>
+
+                  <div class="row justify-content-start justify-content-sm-start justify-content-md-around justify-content-lg-around mt-2">
+                  <button ng-click="fnLogon()" type="button"
+                  class="w-100 mx-3 mb-2 text-uppercase btn btn-primary">
+<i class="fa fa-lock" aria-hidden="true"></i>
+                   Login</button>
+                  <button ng-click="fnRegister()" type="button"
+                  class="w-100 mx-3 mb-2 text-uppercase btn btn-secondary">
 <i class="fa fa-user-plus" aria-hidden="true"></i>
                     Register</button>
                   </div>
 
                </form>
-               <div n-if="isLoginError"class="row text-danger justify-content-center">
+               <div n-if="isLoginError"class="row text-danger my-3 justify-content-center">
   {{loginMsg}}
                </div>
 
@@ -82,22 +97,31 @@
 
 
 <!-- Main Content -->
-<div ng-if="isLogged" class="container-fluid">
+<div ng-show="isLogged" class="container-fluid check-element animate-show-hide">
   <div>
-    <div class="row justify-content-end">
-            <p class="text-info mx-3 my-2">
+    <div class="row d-flex justify-content-between">
+      <div class="col-auto">
+             <!-- Large modal button launcher for new Profiles -->
+ <a ng-click="fnDeveloper()" class="card-link text-warning mx-3 my-2"
+ data-toggle="modal" ng-href=".bd-example-modal-lg">
+ <i class="fa fa-plus-square" aria-hidden="true"></i> Add New Profile</a>
+      </div>
+      <div class="col-auto">
+        <p class="text-info mx-3 my-2">
         <i class="fa fa-sign-out" aria-hidden="true"></i>
         Currently Browsing as: <b id="userID" class="text-warning">{{userName}}</b>
-</p>
+</p></div>
+
     </div>
     <div class="container-fluid px-3">
+
       <div class="row border-top border-info border-bottom
           justify-content-center mb-4">
         <h1 class="text-info display-4 my-3 pb-2"><i class="fa
               fa-address-book-o" aria-hidden="true"></i> Nica Web Developers Profiles Directory</h1>
- <input disabled class="text-center ui-input-text form-control form-control-sm bg-dark"
-        type="text" ng-model="msg"
-             />
+      </div>
+      <div class="row justify-content-center">
+<small class="h5 text-center text-success lead">{{msg}} </small>
       </div>
       <div class="row">
         <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
@@ -246,16 +270,14 @@
         </div> <!-- End of the Cards view Tab -->
 
 
-<!-- Large modal button launcher for new Profiles -->
- <a ng-click="fnDeveloper()" class="h4 card-link text-warning"  data-toggle="modal" ng-href=".bd-example-modal-lg">
- <i class="fa fa-plus-square" aria-hidden="true"></i> Add New Profile</a>
+
 
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
           <div class="container">
             <div class="card my-3">
-              <h5 class="card-header"><i class="fa fa-user-circle-o" aria-hidden="true"></i> ADD NEW PROFILE</h5>
+              <h5 class="card-header text-uppercase"><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{modalTitle}}</h5>
               <div class="card-body">
                 <form>
                   <div class="row my-3">
@@ -326,15 +348,24 @@
           </div>
 
   <div class="modal-footer">
-    <button ng-if="newModeOn" ng-click="fnSaveDeveloper()"
-    type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-floppy-o"
-                    aria-hidden="true"></i> Save changes</button>
+ <a ng-if="newModeOn" ng-click="fnSaveDeveloper()" class="card-link text-warning mx-3 my-2 btn btn-primary"
+ data-toggle="modal" ng-href=".bd-example-modal-lg">
+ <i class="fa fa-floppy-o" aria-hidden="true"></i> Save changes</a>
 
-    <button ng-if="editModeOn" ng-click="fnUpdateDeveloper()"
+    <!-- <button ng-if="newModeOn" ng-click="fnSaveDeveloper()"
     type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-floppy-o"
-                    aria-hidden="true"></i> Update changes</button>
+                    aria-hidden="true"></i> Save changes</button> -->
 
-    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-ban" aria-hidden="true"></i> Cancel</button>
+ <a ng-if="editModeOn" ng-click="fnUpdateDeveloper()"
+  class="card-link text-warning mx-3 my-2 btn btn-primary"
+ data-toggle="modal" ng-href=".bd-example-modal-lg">
+ <i class="fa fa-floppy-o" aria-hidden="true"></i> Update changes</a>
+
+ <a ng-click="fnClearPayload()"
+  class="card-link text-warning mx-3 my-2 btn btn-secondary"
+ data-toggle="modal" ng-href=".bd-example-modal-lg">
+ <i class="fa fa-ban" aria-hidden="true"></i> Cancel</a>
+
   </div>
 
     </div>
@@ -346,13 +377,13 @@
   <div id="footer">
     <div class="container">
       <div class="row justify-content-center">
-        <p class="text-muted mx-1"> © Copyright May 6th, 2020
-          NicaWebDevsProfiles | <b data-trigger='hover' data-toggle="popover" title="About the developer"
+        <p class="text-muted mx-1"> © Copyright May 18th, 2020
+          NicaWebDevsProfiles | <span data-trigger='hover' data-toggle="popover" title="About the developer"
             data-placement="top" data-content="Web Developer, Angular, VueJS & ReactJS Fan, VB .Net
               coder, UX/UI design, Drummer, Bassist, Piano & Guitar Player,
-              Husband & Proud Father of Two Brave Warriors.">Alvison
-            Made With ❤ by Alvison hunter with
-            with AngularJS.</b></p>
+              Husband & Proud Father of Two Brave Warriors.">
+            Made With <b class="text-danger">❤</b> by <em class="text-info">Alvison hunter</em> with
+            with AngularJS.</span></p>
       </div>
     </div>
   </div>

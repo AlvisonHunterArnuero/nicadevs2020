@@ -1,11 +1,18 @@
 .thumbDeveloper {
   border-radius: 50%;
-  border: 1px solid cyan;
+  border: 1px solid rgb(6, 137, 198);
 }
-.ui-input-text {
-  border: none !important;
-  border-color: transparent !important;
-  color: greenyellow;
+
+input:invalid {
+  border: 1px dashed #8e8e8e;
+}
+
+input:invalid:required {
+  background-image: linear-gradient(#e2e6e8, #dff1ff 60%, #ffffff);
+}
+
+input:valid {
+  border: 1px solid rgb(58, 57, 57);
 }
 
 body {
@@ -22,10 +29,30 @@ body {
   background-color: #000;
   overflow-x: hidden;
   padding-top: 20px;
+  background: url(../assets/logon_bk.png) no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .main {
   padding: 0px 10px;
+}
+
+.animate-show-hide.ng-hide {
+  opacity: 0;
+}
+
+.animate-show-hide.ng-hide-add,
+.animate-show-hide.ng-hide-remove {
+  transition: all linear 2.5s;
+}
+
+.check-element {
+  border: 1px solid black;
+  opacity: 1;
+  padding: 10px;
 }
 
 @media screen and (max-height: 450px) {
@@ -67,7 +94,7 @@ body {
 }
 
 .login-main-text {
-  margin-top: 20%;
+  margin-top: 50%;
   padding: 60px;
   color: #fff;
 }

@@ -1,4 +1,5 @@
-let app = angular.module("myApp", []);
+let app = angular.module("myApp", ["ngAnimate"]);
+
 app.controller("customersCtrl", function ($scope) {
   // boolean objects
   $scope.isAdmin = false;
@@ -11,6 +12,7 @@ app.controller("customersCtrl", function ($scope) {
   $scope.editModeOn = false;
   $scope.newModeOn = true;
   $scope.currentEditedItem = null;
+  $scope.modalTitle = "";
   // My arrays for interaction with the server payload
   $scope.arr2JSON = [];
   // Payload init values
@@ -27,10 +29,19 @@ app.controller("customersCtrl", function ($scope) {
     photoURL: "",
   };
 
+  // -------------------- CLEAR INFORMATIVE MSG FUNCTION ----------------------
+  $scope.fnClearInformationMsg = function (argsMsgText) {
+    $scope.msg = argsMsgText;
+    return setTimeout(() => {
+      $scope.msg = "";
+    }, 3000);
+  };
+
   // -------------------- CLEAR FUNCTION ----------------------------------
   // Let us build a function to clear the payload object and
   // prepare it for new data on each of the CRUD functions.
   $scope.fnClearPayload = function () {
+      $scope.modalTitle = "";
     return ($scope.payload = {
       name: "",
       title: "",
@@ -93,15 +104,14 @@ app.controller("customersCtrl", function ($scope) {
   $scope.fnGetDevelopers = function () {
     // First, let's see who is connected to our app at this moment
     $scope.currentUser = $scope.userName;
-    console.log("Init Function Current User: ", $scope.currentUser);
     $scope.callmyXMLHttpRequest(true, null);
   };
   // ------------------ ADD NEW PROFILE -----------------------------------
-  $scope.fnAddDeveloper = function (developer) {
+  $scope.fnAddDeveloper = function () {
     $scope.editModeOn = false;
     $scope.newModeOn = true;
     $scope.fnClearPayload();
-    return developer;
+    return ($scope.modalTitle = `Add New Profile`);
   };
   // ------------------- SAVE NEW PROFILE --------------------------------
   // The save payload function starts here
@@ -109,7 +119,9 @@ app.controller("customersCtrl", function ($scope) {
     $scope.names.push($scope.payload);
     $scope.callmyXMLHttpRequest(false, $scope.names);
     $scope.fnClearPayload();
-    return ($scope.msg = "The user has been successfully registered.");
+    return $scope.fnClearInformationMsg(
+      "The user has been successfully registered."
+    );
   };
   // ------------------- EDIT NEW PROFILE --------------------------------
   $scope.fnEditDeveloper = function (developer, index) {
@@ -117,7 +129,7 @@ app.controller("customersCtrl", function ($scope) {
     $scope.newModeOn = false;
     $scope.currentEditedItem = index;
     angular.copy(developer, $scope.payload);
-    return $scope.payload;
+    return ($scope.modalTitle = `Edit Profile for ${developer.name}`);
   };
   // ------------------- SAVE NEW PROFILE EDIT  -------------------------
   $scope.fnUpdateDeveloper = function () {
@@ -127,7 +139,9 @@ app.controller("customersCtrl", function ($scope) {
     $scope.names.splice($scope.currentEditedItem, 1);
     $scope.callmyXMLHttpRequest(false, $scope.names);
     $scope.fnClearPayload();
-    return ($scope.msg = "The user has been successfully updated.");
+    return $scope.fnClearInformationMsg(
+      "The user has been successfully updated."
+    );
   };
   // ------------------- DELETE A MEMBER --------------------------------
   // The delete profile function starts here
@@ -142,7 +156,9 @@ app.controller("customersCtrl", function ($scope) {
       }
       $scope.callmyXMLHttpRequest(false, $scope.names);
       $scope.fnClearPayload();
-      return ($scope.msg = "The user has been successfully deleted.");
+      return $scope.fnClearInformationMsg(
+        "The user has been successfully deleted."
+      );
     });
   };
   // LOGON DETAILS
@@ -153,27 +169,25 @@ app.controller("customersCtrl", function ($scope) {
     const tempArray = $scope.names ? $scope.names : null;
     // using a local scope array to iterate with it just in this function
     let tempUserName = $scope.userName;
-    const devNames = tempArray.filter((dev) => dev.name == tempUserName);
-    console.log("DEV NAMES: ", devNames);
-    // If the Login Username exists, then we can enable the content
-
+    let tempUserPwd = $scope.userPwd;
+    const devNames = tempArray.filter(
+      (dev) => dev.username == tempUserName && dev.password == tempUserPwd
+    );
+    // If the Login Username and password exists, then we can enable the content
     if (Array.isArray(devNames) != "undefined" && devNames.length != 0) {
       $scope.isLogged = true;
-      // Let us get the name and role for this user
-      const userRole = tempArray.filter(
-        (dev) => dev.name == tempUserName && dev.role == "admin"
-      );
-      console.log("THIS IS THE USER ROLE STATUS: ", userRole);
+      console.log("DEVNAMES: ", devNames);
       // Let us evaluate if this user is an admin and can access the admin rights
-      let x =
-        userRole == null ? ($scope.isAdmin = false) : ($scope.isAdmin = true);
-      console.log("USER ROLES: ", x);
-      $scope.msg = "The user has successfully logged in.";
+      devNames[0].role == "admin"
+        ? ($scope.isAdmin = true)
+        : ($scope.isAdmin = false);
+      console.log("USER ROLES: ", devNames[0].role);
+      $scope.fnClearInformationMsg("The user has successfully logged in.");
     } else {
       $scope.isLogged = false;
       $scope.isLoginError = true;
       $scope.loginMsg = "Login failed: Invalid username or password.";
-      return;
+      return; // to leave the function
     }
     return $scope.isLogged;
   };
@@ -183,13 +197,25 @@ app.controller("customersCtrl", function ($scope) {
   $scope.fnGetDevelopers();
 
   // ------------------ WATCHERS OR GUARDIANS TO OBSERVE --------------------
-  // Watcher over here, to activate it when the profile array gets
-  $scope.$watch("names", function (newval, oldval) {
-    console.log("Valor Inicial", oldval);
-    console.log("Nuevo Valor", newval);
+  // Watcher over here, to check correct password
+  $scope.$watch("userPwd", function (newval, oldval) {
+    newval != oldval
+      ? ($scope.isLoginError = false)
+      : ($scope.isLoginError = true);
+    // Let us clean up the msg text since we are revalidating the
+    // username and password one more time
+    $scope.loginMsg = "";
   });
 
   $scope.$watch("userName", function (newval, oldval) {
-    newval ? ($scope.isLoginError = false) : ($scope.isLoginError = true);
+    // The watcher will tell us if a change has come to pass
+    // by giving us the oldval and the newval to make the
+    // comparison, this feature is amazing on AngularJS
+    newval != oldval
+      ? ($scope.isLoginError = false)
+      : ($scope.isLoginError = true);
+    // Let us clean up the msg text since we are revalidating the
+    // username and password one more time
+    $scope.loginMsg = "";
   });
 });
