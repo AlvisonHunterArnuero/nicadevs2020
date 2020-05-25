@@ -9,7 +9,7 @@
     "name": "Alvison Hunter",
     "twitter": "https://twitter.com/allwissendjager",
     "linkedin": "https://www.linkedin.com/in/alvison-hunter-01512773/",
-    "photoURL": "",
+    "photoURL": "https://i.ibb.co/80JvdSr/Alvison-Hunter.jpg",
     "role": "admin",
     "username": "alvisonhunter",
     "password": "Pwd2020"
@@ -24,11 +24,27 @@
     "name": "Engel Torrez",
     "twitter": "",
     "linkedin": "",
-    "photoURL": "",
+    "photoURL": "https://i.ibb.co/db8FWtZ/Engel-Torrez.jpg",
     "role": "",
     "username": "engeltorrez",
     "password": "Pwd2020"
   },
+    {
+    "title": "Full Stack Developer",
+    "language": "Javascript,Python",
+    "framework": "VueJS, NodeJS",
+    "library": "ReactJS",
+    "learning": "TypeScript",
+    "workplace": "Freelancer",
+    "name": "Eleazar Gaitan",
+    "twitter": "",
+    "linkedin": "",
+    "photoURL": "https://i.ibb.co/hdyrtsG/noPhoto.jpg",
+    "role": "",
+    "username": "eleazargaitan",
+    "password": "Pwd2020"
+  },
+
   {
     "title": "Full Stack Developer",
     "language": "JavaScript, VB.NET, C#, Python",
@@ -39,7 +55,7 @@
     "name": "Ernesto Gutierrez",
     "twitter": "https://twitter.com/eblind39",
     "linkedin": "https://www.linkedin.com/in/ernesto-gutierrez-99349b12a/",
-    "photoURL": "",
+    "photoURL": "https://i.ibb.co/W3y6FW2/Ernesto-Gutierrez.jpg",
     "role": "admin",
     "username": "ernestogutierrez",
     "password": "Pwd2020"
@@ -54,7 +70,7 @@
     "name": "Kathya Sarria",
     "twitter": "https://twitter.com/SarriaKathya",
     "linkedin": "https://www.linkedin.com/in/kathya-sarria-campbell-6a9771177/",
-    "photoURL": "",
+    "photoURL": "https://i.ibb.co/SmLjF0Y/Kathya-Sarria.jpg",
     "role": "",
     "username": "kathyasarria",
     "password": "Pwd2020"
@@ -69,7 +85,7 @@
     "name": "Antonio Flores",
     "twitter": "",
     "linkedin": "https://www.linkedin.com/in/antonio-flores-914a77154/",
-    "photoURL": "",
+    "photoURL": "https://i.ibb.co/87Hj1m0/Antonio-Flores.jpg",
     "role": "",
     "username": "antonioflores",
     "password": "Pwd2020"
@@ -84,7 +100,7 @@
     "name": "Marvin Obando",
     "twitter": "",
     "linkedin": "",
-    "photoURL": "",
+    "photoURL": "https://i.ibb.co/2hMSg3X/Marvin-Obando.jpg",
     "role": "",
     "username": "marvinobando",
     "password": "Pwd2020"
@@ -99,7 +115,7 @@
     "name": "Billi Ramirez",
     "twitter": "https://twitter.com/billiramirezdev",
     "linkedin": "https://www.linkedin.com/in/billiramirez",
-    "photoURL": "",
+    "photoURL": "https://i.ibb.co/NrP7Pnv/Billi-Ramirez.jpg",
     "role": "admin",
     "username": "billiramirez",
     "password": "Pwd2020"
@@ -114,7 +130,7 @@
     "name": "Augusto Martinez",
     "twitter": "",
     "linkedin": "",
-    "photoURL": "",
+    "photoURL": "https://i.ibb.co/rwdhfVS/Augusto-Martinez.jpg",
     "role": "admin",
     "username": "augustomartinez",
     "password": "Pwd2020"

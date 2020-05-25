@@ -1,16 +1,16 @@
 let app = angular.module("myApp", []);
 
 app.controller("customersCtrl", function ($scope) {
-  // boolean objects
+  // boolean objects and other variables
   $scope.isAdmin = false;
   $scope.isLoginError = false;
   $scope.isLogged = false;
-  $scope.msg = "";
-  $scope.loginMsg = "";
-  $scope.userName = "alvisonhunter";
-  $scope.userPwd = "Pwd2020";
   $scope.editModeOn = false;
   $scope.newModeOn = true;
+  $scope.msg = "";
+  $scope.loginMsg = "";
+  $scope.userName = "";
+  $scope.userPwd = "";
   $scope.currentEditedItem = null;
   $scope.modalTitle = "";
   $scope.currentUserPhoto = "noPhoto";
@@ -196,7 +196,7 @@ app.controller("customersCtrl", function ($scope) {
     if (Array.isArray(devNames) != "undefined" && devNames.length != 0) {
       $scope.isLogged = true;
       console.log("DEVNAMES: ", devNames);
-      $scope.currentUserPhoto = devNames[0].name;
+      $scope.currentUserPhoto = devNames[0].photoURL;
       // Let us evaluate if this user is an admin and can access the admin rights
       devNames[0].role == "admin"
         ? ($scope.isAdmin = true)
@@ -216,7 +216,7 @@ app.controller("customersCtrl", function ($scope) {
   // Let's initialize the function to bring all these people in
   $scope.fnGetDevelopers();
 
-  // ------------------ WATCHERS OR GUARDIANS TO OBSERVE --------------------
+  // ------------------ MY APP WATCHERS OR GUARDIANS --------------------
   // Watcher over here, to check correct password
   $scope.$watch("userPwd", function (newval, oldval) {
     newval != oldval
