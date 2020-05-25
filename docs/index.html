@@ -27,7 +27,6 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-animate/1.7.9/angular-animate.js" integrity="sha256-XU9ZSbxfycFUAnmln+SQefeW7B64i1PPDUNyAXWQALk=" crossorigin="anonymous"></script>
   <!-- bootbox code -->
   <script src="js/bootbox.min.js"></script>
   <script src="js/bootbox.locales.min.js"></script>
@@ -44,6 +43,7 @@
 
 <body ng-app="myApp" ng-controller="customersCtrl">
  <!-- LOGIN SCREEN STARTS HERE -->
+
 <div ng-show="!isLogged" class="container">
       <div class="sidenav">
          <div class="login-main-text">
@@ -98,17 +98,26 @@
 
 <!-- Main Content -->
 <div ng-show="isLogged" class="container-fluid check-element animate-show-hide">
+
+<audio id="audioTag" controls>
+  <source src="audio/when.mp3" type="audio/mp3">
+  <source src="audio/when.ogg" type="audio/ogg">
+</audio>
+
   <div>
     <div class="row d-flex justify-content-between">
       <div class="col-auto">
              <!-- Large modal button launcher for new Profiles -->
- <a ng-click="fnDeveloper()" class="card-link text-warning mx-3 my-2"
+ <a ng-click="fnAddDeveloper()" class="card-link text-warning mx-3 my-2"
  data-toggle="modal" ng-href=".bd-example-modal-lg">
  <i class="fa fa-plus-square" aria-hidden="true"></i> Add New Profile</a>
+
       </div>
       <div class="col-auto">
         <p class="text-info mx-3 my-2">
-        <i class="fa fa-sign-out" aria-hidden="true"></i>
+        <!-- <i class="fa fa-sign-out" aria-hidden="true"></i> -->
+        <img class="thumbDeveloper" height="30" width="30"
+                      ng-src="assets/{{currentUserPhoto}}.jpeg" />
         Currently Browsing as: <b id="userID" class="text-warning">{{userName}}</b>
 </p></div>
 
@@ -165,10 +174,12 @@
       <nav>
         <!-- Begin of the tab sections -->
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-          <a class="nav-item nav-link active" id="nav-tables-tab" data-toggle="tab" href="#nav-tables" role="tab"
+          <a ng-click="fnPlayAudio()" class="nav-item nav-link active" id="nav-tables-tab" data-toggle="tab"
+          ng-href="#nav-tables" role="tab"
             aria-controls="nav-tables" aria-selected="true"><i class="fa fa-table" aria-hidden="true"></i> Table
             View</a>
-          <a class="nav-item nav-link" id="nav-cards-tab" data-toggle="tab" href="#nav-cards" role="tab"
+          <a ng-click="fnPlayAudio()" class="nav-item nav-link" id="nav-cards-tab" data-toggle="tab"
+          ng-href="#nav-cards" role="tab"
             aria-controls="nav-cards" aria-selected="false"><i class="fa fa-id-card-o" aria-hidden="true"></i> Cards
             View</a>
 

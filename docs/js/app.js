@@ -1,4 +1,4 @@
-let app = angular.module("myApp", ["ngAnimate"]);
+let app = angular.module("myApp", []);
 
 app.controller("customersCtrl", function ($scope) {
   // boolean objects
@@ -7,12 +7,13 @@ app.controller("customersCtrl", function ($scope) {
   $scope.isLogged = false;
   $scope.msg = "";
   $scope.loginMsg = "";
-  $scope.userName = "";
-  $scope.userPwd = "";
+  $scope.userName = "alvisonhunter";
+  $scope.userPwd = "Pwd2020";
   $scope.editModeOn = false;
   $scope.newModeOn = true;
   $scope.currentEditedItem = null;
   $scope.modalTitle = "";
+  $scope.currentUserPhoto = "noPhoto";
   // My arrays for interaction with the server payload
   $scope.arr2JSON = [];
   // Payload init values
@@ -29,6 +30,12 @@ app.controller("customersCtrl", function ($scope) {
     photoURL: "",
   };
 
+  $scope.fnPlayAudio = function () {
+    console.log("audio here");
+    var audio = document.getElementById("audioTag");
+    audio.play();
+  };
+
   // -------------------- CLEAR INFORMATIVE MSG FUNCTION ----------------------
   $scope.fnClearInformationMsg = function (argsMsgText) {
     $scope.msg = argsMsgText;
@@ -41,7 +48,7 @@ app.controller("customersCtrl", function ($scope) {
   // Let us build a function to clear the payload object and
   // prepare it for new data on each of the CRUD functions.
   $scope.fnClearPayload = function () {
-      $scope.modalTitle = "";
+    $scope.modalTitle = "";
     return ($scope.payload = {
       name: "",
       title: "",
@@ -58,44 +65,55 @@ app.controller("customersCtrl", function ($scope) {
   // -------------------- API CALLS ---------------------------------------
   // Prepare communication with the API Endpoint
   $scope.callmyXMLHttpRequest = function (argsRequestType, argsPayload) {
-    let req = new XMLHttpRequest();
+    // I used this constructor to initialize an XMLHttpRequest.
+    const xhr = new XMLHttpRequest();
+    // Parameter to indicate if this is a GET or a PUT method
     let isRequestTypeGet = argsRequestType;
+    // The array that I will use locally to work with the data
     let arr2JSON = JSON.stringify(argsPayload);
+    // All set, now is time to put this data in our local Scope
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState == XMLHttpRequest.DONE) {
+        let status = xhr.status;
+        if (status === 0 || (status >= 200 && status < 400)) {
+          console.log("The request has been completed successfully");
+          $scope.names = JSON.parse(xhr.responseText);
+        } else {
+          alert("Oh no! There has been an error with the request!");
+        }
+      }
+    };
+
     // If the user is requesting data, we GET it, otherwise we send it with PUT
     if (isRequestTypeGet == true) {
-      req.onreadystatechange = () => {
-        if (req.readyState == XMLHttpRequest.DONE) {
-          $scope.names = JSON.parse(req.responseText);
-        }
-      };
-      req.open(
+      xhr.open(
         "GET",
         "https://api.jsonbin.io/b/5ec28b342bb52645e5531883",
         true
       );
-      req.setRequestHeader(
+      xhr.setRequestHeader(
         "secret-key",
         "$2b$10$4qmVP5JEguFHY9kiP5GkVuoHaZjhwClK3e7EwNxKm40AiMj.F5rHu"
       );
-      return req.send();
+      return xhr.send();
     } else {
-      req.onreadystatechange = () => {
-        if (req.readyState == XMLHttpRequest.DONE) {
-          console.log(req.responseText);
-        }
-      };
-      req.open(
+      // xhr.onreadystatechange = () => {
+      //   if (xhr.readyState == XMLHttpRequest.DONE) {
+      //     console.log(xhr.responseText);
+      //   }
+      // };
+      xhr.open(
         "PUT",
         "https://api.jsonbin.io/b/5ec28b342bb52645e5531883",
         true
       );
-      req.setRequestHeader("Content-Type", "application/json");
-      req.setRequestHeader("versioning", "false");
-      req.setRequestHeader(
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.setRequestHeader("versioning", "false");
+      xhr.setRequestHeader(
         "secret-key",
         "$2b$10$4qmVP5JEguFHY9kiP5GkVuoHaZjhwClK3e7EwNxKm40AiMj.F5rHu"
       );
-      return req.send(arr2JSON);
+      return xhr.send(arr2JSON);
     }
   };
 
@@ -111,7 +129,8 @@ app.controller("customersCtrl", function ($scope) {
     $scope.editModeOn = false;
     $scope.newModeOn = true;
     $scope.fnClearPayload();
-    return ($scope.modalTitle = `Add New Profile`);
+    $scope.modalTitle = "Add New Profile";
+    return $scope.modalTitle;
   };
   // ------------------- SAVE NEW PROFILE --------------------------------
   // The save payload function starts here
@@ -177,6 +196,7 @@ app.controller("customersCtrl", function ($scope) {
     if (Array.isArray(devNames) != "undefined" && devNames.length != 0) {
       $scope.isLogged = true;
       console.log("DEVNAMES: ", devNames);
+      $scope.currentUserPhoto = devNames[0].name;
       // Let us evaluate if this user is an admin and can access the admin rights
       devNames[0].role == "admin"
         ? ($scope.isAdmin = true)

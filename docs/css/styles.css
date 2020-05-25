@@ -2,7 +2,9 @@
   border-radius: 50%;
   border: 1px solid rgb(6, 137, 198);
 }
-
+#audioTag {
+  display: none !important;
+}
 input:invalid {
   border: 1px dashed #8e8e8e;
 }
