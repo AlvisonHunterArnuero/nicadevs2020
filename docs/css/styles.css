@@ -73,6 +73,34 @@ body {
   }
 }
 
+.login-main-text {
+  margin-top: 50%;
+  padding: 60px;
+  color: #fff;
+}
+
+.login-main-text h2 {
+  font-weight: 300;
+}
+
+.btn-black {
+  background-color: #000 !important;
+  color: #fff;
+}
+
+.zoom {
+  transition-timing-function: ease-in;
+  transition: transform 0.2s;
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  transition-timing-function: ease-out;
+  -ms-transform: scale(1.2); /* IE 9 */
+  -webkit-transform: scale(1.2); /* Safari 3-8 */
+  transform: scale(1.2);
+}
+
 @media screen and (min-width: 768px) {
   .main {
     margin-left: 40%;
@@ -93,19 +121,4 @@ body {
   .register-form {
     margin-top: 20%;
   }
-}
-
-.login-main-text {
-  margin-top: 50%;
-  padding: 60px;
-  color: #fff;
-}
-
-.login-main-text h2 {
-  font-weight: 300;
-}
-
-.btn-black {
-  background-color: #000 !important;
-  color: #fff;
 }

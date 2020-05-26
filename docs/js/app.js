@@ -1,19 +1,23 @@
 let app = angular.module("myApp", []);
-
 app.controller("customersCtrl", function ($scope) {
-  // boolean objects and other variables
+  // Start declaring boolean objects and other variables
   $scope.isAdmin = false;
   $scope.isLoginError = false;
   $scope.isLogged = false;
   $scope.editModeOn = false;
   $scope.newModeOn = true;
+  // Message on screen properties
   $scope.msg = "";
   $scope.loginMsg = "";
+  $scope.modalTitle = "";
+  // current user's username and paswword
   $scope.userName = "";
   $scope.userPwd = "";
+  //Item to be edited, basically to assign its index
   $scope.currentEditedItem = null;
-  $scope.modalTitle = "";
-  $scope.currentUserPhoto = "noPhoto";
+  // Current User Photo to be displayed on the
+  // right side of the screen as an icon
+  $scope.currentUserPhoto = "";
   // My arrays for interaction with the server payload
   $scope.arr2JSON = [];
   // Payload init values
@@ -30,13 +34,7 @@ app.controller("customersCtrl", function ($scope) {
     photoURL: "",
   };
 
-  $scope.fnPlayAudio = function () {
-    console.log("audio here");
-    var audio = document.getElementById("audioTag");
-    audio.play();
-  };
-
-  // -------------------- CLEAR INFORMATIVE MSG FUNCTION ----------------------
+  // -------------------- CLEAR INFORMATIVE MSG FUNCTION -------------------
   $scope.fnClearInformationMsg = function (argsMsgText) {
     $scope.msg = argsMsgText;
     return setTimeout(() => {
@@ -62,6 +60,13 @@ app.controller("customersCtrl", function ($scope) {
       photoURL: "",
     });
   };
+
+  // -------------------- CLICK SOUNDS ON TABS FUNCTION -------------------
+  $scope.fnPlayAudio = function () {
+    let audio = document.getElementById("audioTag");
+    audio.play();
+  };
+
   // -------------------- API CALLS ---------------------------------------
   // Prepare communication with the API Endpoint
   $scope.callmyXMLHttpRequest = function (argsRequestType, argsPayload) {
@@ -79,12 +84,11 @@ app.controller("customersCtrl", function ($scope) {
           console.log("The request has been completed successfully");
           $scope.names = JSON.parse(xhr.responseText);
         } else {
-          alert("Oh no! There has been an error with the request!");
+          console.log("Oh no! There has been an error with the request!");
         }
       }
     };
-
-    // If the user is requesting data, we GET it, otherwise we send it with PUT
+    // If user is requesting data, we GET it, otherwise we send it with PUT
     if (isRequestTypeGet == true) {
       xhr.open(
         "GET",
@@ -97,11 +101,6 @@ app.controller("customersCtrl", function ($scope) {
       );
       return xhr.send();
     } else {
-      // xhr.onreadystatechange = () => {
-      //   if (xhr.readyState == XMLHttpRequest.DONE) {
-      //     console.log(xhr.responseText);
-      //   }
-      // };
       xhr.open(
         "PUT",
         "https://api.jsonbin.io/b/5ec28b342bb52645e5531883",
@@ -180,8 +179,7 @@ app.controller("customersCtrl", function ($scope) {
       );
     });
   };
-  // LOGON DETAILS
-
+  // ------------------- LOGON DETAILS --------------------------------
   $scope.fnLogon = function () {
     $scope.isLoginError = false;
     // let's validate if the array has been fetched from the API already
@@ -192,16 +190,15 @@ app.controller("customersCtrl", function ($scope) {
     const devNames = tempArray.filter(
       (dev) => dev.username == tempUserName && dev.password == tempUserPwd
     );
-    // If the Login Username and password exists, then we can enable the content
+    // If Login Username and password exists, then we can enable the main content
     if (Array.isArray(devNames) != "undefined" && devNames.length != 0) {
       $scope.isLogged = true;
-      console.log("DEVNAMES: ", devNames);
+      // get the current user photo to display it on the screen
       $scope.currentUserPhoto = devNames[0].photoURL;
       // Let us evaluate if this user is an admin and can access the admin rights
       devNames[0].role == "admin"
         ? ($scope.isAdmin = true)
         : ($scope.isAdmin = false);
-      console.log("USER ROLES: ", devNames[0].role);
       $scope.fnClearInformationMsg("The user has successfully logged in.");
     } else {
       $scope.isLogged = false;
@@ -210,6 +207,18 @@ app.controller("customersCtrl", function ($scope) {
       return; // to leave the function
     }
     return $scope.isLogged;
+  };
+
+  // ------------------- LOGOFF FUNCTION --------------------------------
+  $scope.fnLogOff = function () {
+    // Prepare message on the screen to inform user that he has been logof successuflly.
+    $scope.loginMsg = `${$scope.userName} has successfully logoff from this app.`;
+    // Clear up the current username and password, to avoid relogin with values on text
+    $scope.userName = "";
+    $scope.userPwd = "";
+    // login status to false to logoff from main screen
+    $scope.isLogged = false;
+    return $scope.loginMsg;
   };
 
   // ------------------ INITIAL DATA FETCHING FUNCTION --------------------

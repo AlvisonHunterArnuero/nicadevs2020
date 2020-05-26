@@ -44,7 +44,7 @@
 <body ng-app="myApp" ng-controller="customersCtrl">
  <!-- LOGIN SCREEN STARTS HERE -->
 
-<div ng-show="!isLogged" class="container">
+<div ng-hide="isLogged" class="container">
       <div class="sidenav">
          <div class="login-main-text">
             <h2 class="text-info">Nica Web Developers Profiles Directory</h2>
@@ -97,7 +97,7 @@
 
 
 <!-- Main Content -->
-<div ng-show="isLogged" class="container-fluid check-element animate-show-hide">
+<div ng-if="isLogged" class="container-fluid check-element animate-show-hide">
 
 <audio id="audioTag" controls>
   <source src="audio/click.mp3" type="audio/mp3">
@@ -117,8 +117,11 @@
         <p class="text-info mx-3 my-2">
         <!-- <i class="fa fa-sign-out" aria-hidden="true"></i> -->
         <img class="thumbDeveloper" height="30" width="30"
-                      ng-src="{{currentUserPhoto}}" />
-        Currently Browsing as: <b id="userID" class="text-warning">{{userName}}</b>
+                      ng-src="{{currentUserPhoto}}" /> Currently Browsing as: <a ng-click="fnLogOff()" class="card-link"
+ data-toggle="modal" ng-href=".bd-example-modal-lg">
+
+        <b id="userID" data-toggle="tooltip" data-placement="bottom" title="Click to logout" class="text-warning">
+          {{userName}}</b> </a>
 </p></div>
 
     </div>
@@ -224,11 +227,9 @@
             <div class="row justify-content-center">
               <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-3" ng-repeat="developer in names | filter: nameFilter | filter:
                   languageFilter | filter: titleFilter track by $index">
-                <div class="card border-secondary mb-3">
+                <div class="card  border-secondary mb-3">
                   <img class="card-img-top"
                   ng-src="{{ developer.photoURL }}">
-                  <!-- <img class="card-img-top" ng-src="assets/{{developer.name}}.jpeg"
-                  :alt="{{ developer.name }}" /> -->
                   <div class="card-body">
                     <h3 class="card-title text-uppercase text-warning">{{
                         developer.name }}</h3>
@@ -301,20 +302,19 @@
                       <input ng-model="payload.title" id="title" type="text" class="form-control"
                         placeholder="Please type in your Title">
                     </div>
-                  </div>
-                  <div class="row my-3">
-                    <div class="col">
+                      <div class="col">
                       <label for="photoURL">Photo URL [must be 200x200 px]:</label>
                       <input ng-model="payload.photoURL" id="photoURL" type="text" class="form-control"
                         placeholder="Type in your photo's URL">
                     </div>
+
+                  </div>
+                  <div class="row my-3">
                     <div class="col">
                       <label for="language">Language:</label>
                       <input ng-model="payload.language" id="language" type="text" class="form-control"
                         placeholder="What is your main programming Language?">
                     </div>
-                  </div>
-                  <div class="row my-3">
                     <div class="col">
                       <label for="framework">Framework:</label>
                       <input ng-model="payload.framework" id="framework" type="text" class="form-control"
@@ -327,19 +327,12 @@
                     </div>
                   </div>
                   <div class="row my-3">
-                    <div class="col">
-                      <label for="workplace">Workplace:</label>
-                      <input ng-model="payload.workplace" id="workplace" type="text" class="form-control"
-                        placeholder="Where do you work?">
-                    </div>
-                    <div class="col">
+<div class="col">
                       <label for="learning">Currently Learning:</label>
                       <input ng-model="payload.learning" id="learning" type="text" class="form-control"
                         placeholder="What are you learning at this moment?">
                     </div>
-                  </div>
-                  <div class="row my-3">
-                    <div class="col">
+                               <div class="col">
                       <label for="twitter">Twitter Account:</label>
                       <input ng-model="payload.twitter" id="twitter" type="text" class="form-control"
                         placeholder="Twitter Account URL?">
@@ -348,6 +341,23 @@
                       <label for="linkedIn">LinkedIn Account:</label>
                       <input ng-model="payload.linkedIn" id="linkedIn" type="text" class="form-control"
                         placeholder="LinkedIn Account URL?">
+                    </div>
+                  </div>
+                  <div class="row my-3">
+                    <div class="col">
+                      <label for="workplace">Workplace:</label>
+                      <input ng-model="payload.workplace" id="workplace" type="text" class="form-control"
+                        placeholder="Where do you work?">
+                    </div>
+                    <div class="col">
+                      <label for="username">User Name:</label>
+                      <input ng-model="payload.username" id="username" type="text" class="form-control"
+                        placeholder="User Name">
+                    </div>
+                    <div class="col">
+                      <label for="password">User Password:</label>
+                      <input ng-model="payload.password" id="password" type="text" class="form-control"
+                        placeholder="**********">
                     </div>
 
                   </div>
